@@ -1,25 +1,37 @@
 const express = require('express');
-const router = require('./router');
 
 const app = express();
 
-// Middleware to log all incoming requests
+require('dotenv').config();
+
+app.use(express.json());
+
+// Authentication middleware
 app.use((req, res, next) => {
-    console.log(`Incoming: ${req.method} ${req.path}`);
+    if (req.headers['x-api-key'] !== process.env.API_KEY) {
+        return res.status(403).json({ error: 'Unauthorized' });
+    }
     next();
 });
 
-app.use(express.json());
-app.use('/', router); // All routes will be under /
+// Example usage of rtmpUrls
+app.post('/start-stream', (req, res) => {
+    const { streamKey } = req.body;
+    if (!streamKey) {
+        return res.status(400).json({ error: 'Missing streamKey' });
+    }
 
-app.get('/health', (req, res) => {
-    res.send('OK');
+    const rtmpUrls = {
+        youtube: `${process.env.YOUTUBE_RTMP_URL}/${streamKey}`,
+        twitch: `${process.env.TWITCH_RTMP_URL}/${streamKey}`
+    };
+
+    // ... your stream logic here
+
+    res.json({ rtmpUrls });
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-    console.log('Available routes:');
-    console.log('POST /start');
-    console.log('GET /health');
 });
