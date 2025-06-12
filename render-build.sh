@@ -1,9 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-# System dependencies
-sudo apt-get update
-sudo apt-get install -y ffmpeg
-
-# Node dependencies
+echo "=== STARTING BUILD ==="
+apt-get update
+apt-get install -y ffmpeg
 npm ci --only=production
+echo "=== BUILD SUCCESS ==="
