@@ -1,0 +1,1040 @@
+[33mcommit ffd35354dbb5ee4bbbdb1848602bc9fdecf64e9e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: sire sorose <128201476+siresorose@users.noreply.github.com>
+Date:   Fri Jun 13 18:16:15 2025 +0000
+
+    Your meaningful commit message
+
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mindex 4c49bd78..6ed48a98 100644[m
+[1m--- a/.gitignore[m
+[1m+++ b/.gitignore[m
+[36m@@ -1 +1,2 @@[m
+ .env[m
+[32m+[m[32mnode_modules[m
+[1mdiff --git a/Dockerfile b/Dockerfile[m
+[1mnew file mode 100644[m
+[1mindex 00000000..99840156[m
+[1m--- /dev/null[m
+[1m+++ b/Dockerfile[m
+[36m@@ -0,0 +1,10 @@[m
+[32m+[m[32mFROM node:18-slim[m
+[32m+[m
+[32m+[m[32mWORKDIR /app[m
+[32m+[m[32mCOPY package*.json ./[m
+[32m+[m[32mRUN apt-get update && apt-get install -y ffmpeg[m
+[32m+[m[32mRUN npm ci --only=production[m
+[32m+[m[32mCOPY . .[m
+[32m+[m
+[32m+[m[32mEXPOSE 3000[m
+[32m+[m[32mCMD ["node", "server.js"][m
+[1mdiff --git a/exec -l /bin/bash/google-cloud-sdk/.install/bq-nix.manifest b/exec -l /bin/bash/google-cloud-sdk/.install/bq-nix.manifest[m
+[1mnew file mode 100644[m
+[1mindex 00000000..bf2c2138[m
+[1m--- /dev/null[m
+[1m+++ b/exec -l /bin/bash/google-cloud-sdk/.install/bq-nix.manifest[m	
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32mbin/bq[m
+[1mdiff --git a/exec -l /bin/bash/google-cloud-sdk/.install/bq-nix.snapshot.json b/exec -l /bin/bash/google-cloud-sdk/.install/bq-nix.snapshot.json[m
+[1mnew file mode 100644[m
+[1mindex 00000000..35ff5424[m
+[1m--- /dev/null[m
+[1m+++ b/exec -l /bin/bash/google-cloud-sdk/.install/bq-nix.snapshot.json[m	
+[36m@@ -0,0 +1,44 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m  "components": [[m
+[32m+[m[32m    {[m
+[32m+[m[32m      "data": {[m
+[32m+[m[32m        "contents_checksum": "0a2bf62530849e8882a1cf4c7699078f44e1ca965c2dd9d90d18d3452d1d8d1b",[m
+[32m+[m[32m        "source": "",[m
+[32m+[m[32m        "type": "tar"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "dependencies": [[m
+[32m+[m[32m        "bq",[m
+[32m+[m[32m        "core"[m
+[32m+[m[32m      ],[m
+[32m+[m[32m      "details": {[m
+[32m+[m[32m        "description": "Provides the bq tool for interacting with the BigQuery service.",[m
+[32m+[m[32m        "display_name": "BigQuery Command Line Tool (Platform Specific)"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "gdu_only": false,[m
+[32m+[m[32m      "id": "bq-nix",[m
+[32m+[m[32m      "is_configuration": false,[m
+[32m+[m[32m      "is_hidden": true,[m
+[32m+[m[32m      "is_required": false,[m
+[32m+[m[32m      "platform": {[m
+[32m+[m[32m        "operating_systems": [[m
+[32m+[m[32m          "CYGWIN",[m
+[32m+[m[32m          "LINUX",[m
+[32m+[m[32m          "MACOSX",[m
+[32m+[m[32m          "MSYS"[m
+[32m+[m[32m        ][m
+[32m+[m[32m      },[m
+[32m+[m[32m      "platform_required": false,[m
+[32m+[m[32m      "version": {[m
+[32m+[m[32m        "build_number": 20250523104322,[m
+[32m+[m[32m        "version_string": "2.1.17"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    }[m
+[32m+[m[32m  ],[m
+[32m+[m[32m  "revision": 20250610213429,[m
+[32m+[m[32m  "schema_version": {[m
+[32m+[m[32m    "no_update": false,[m
+[32m+[m[32m    "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz",[m
+[32m+[m[32m    "version": 3[m
+[32m+[m[32m  },[m
+[32m+[m[32m  "version": "526.0.1"[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/exec -l /bin/bash/google-cloud-sdk/.install/bq.manifest b/exec -l /bin/bash/google-cloud-sdk/.install/bq.manifest[m
+[1mnew file mode 100644[m
+[1mindex 00000000..058093d3[m
+[1m--- /dev/null[m
+[1m+++ b/exec -l /bin/bash/google-cloud-sdk/.install/bq.manifest[m	
+[36m@@ -0,0 +1,519 @@[m
+[32m+[m[32mbin/bootstrapping/bq.py[m
+[32m+[m[32mdata/cli/bq.json[m
+[32m+[m[32mplatform/bq/LICENSE.txt[m
+[32m+[m[32mplatform/bq/MANIFEST.in[m
+[32m+[m[32mplatform/bq/README.txt[m
+[32m+[m[32mplatform/bq/VERSION[m
+[32m+[m[32mplatform/bq/auth/gcloud_credential_loader.py[m
+[32m+[m[32mplatform/bq/auth/main_credential_loader.py[m
+[32m+[m[32mplatform/bq/auth/utils.py[m
+[32m+[m[32mplatform/bq/bigquery_client.py[m
+[32m+[m[32mplatform/bq/bq.py[m
+[32m+[m[32mplatform/bq/bq_auth_flags.py[m
+[32m+[m[32mplatform/bq/bq_flags.py[m
+[32m+[m[32mplatform/bq/bq_utils.py[m
+[32m+[m[32mplatform/bq/clients/bigquery_client.py[m
+[32m+[m[32mplatform/bq/clients/bigquery_client_extended.py[m
+[32m+[m[32mplatform/bq/clients/bigquery_http.py[m
+[32m+[m[32mplatform/bq/clients/client_connection.py[m
+[32m+[m[32mplatform/bq/clients/client_data_transfer.py[m
+[32m+[m[32mplatform/bq/clients/client_dataset.py[m
+[32m+[m[32mplatform/bq/clients/client_deprecated.py[m
+[32m+[m[32mplatform/bq/clients/client_job.py[m
+[32m+[m[32mplatform/bq/clients/client_model.py[m
+[32m+[m[32mplatform/bq/clients/client_project.py[m
+[32m+[m[32mplatform/bq/clients/client_reservation.py[m
+[32m+[m[32mplatform/bq/clients/client_routine.py[m
+[32m+[m[32mplatform/bq/clients/client_row_access_policy.py[m
+[32m+[m[32mplatform/bq/clients/client_table.py[m
+[32m+[m[32mplatform/bq/clients/table_reader.py[m
+[32m+[m[32mplatform/bq/clients/utils.py[m
+[32m+[m[32mplatform/bq/clients/wait_printer.py[m
+[32m+[m[32mplatform/bq/credential_loader.py[m
+[32m+[m[32mplatform/bq/discovery_documents/discovery_document_cache.py[m
+[32m+[m[32mplatform/bq/discovery_documents/discovery_document_loader.py[m
+[32m+[m[32mplatform/bq/discovery_next/bigquery.json[m
+[32m+[m[32mplatform/bq/discovery_next/bigqueryreservation_google_rest_v1.json[m
+[32m+[m[32mplatform/bq/discovery_next/iam-policy.json[m
+[32m+[m[32mplatform/bq/frontend/bigquery_command.py[m
+[32m+[m[32mplatform/bq/frontend/bq_cached_client.py[m
+[32m+[m[32mplatform/bq/frontend/command_cancel.py[m
+[32m+[m[32mplatform/bq/frontend/command_copy.py[m
+[32m+[m[32mplatform/bq/frontend/command_delete.py[m
+[32m+[m[32mplatform/bq/frontend/command_extract.py[m
+[32m+[m[32mplatform/bq/frontend/command_head.py[m
+[32m+[m[32mplatform/bq/frontend/command_info.py[m
+[32m+[m[32mplatform/bq/frontend/command_init.py[m
+[32m+[m[32mplatform/bq/frontend/command_insert.py[m
+[32m+[m[32mplatform/bq/frontend/command_list.py[m
+[32m+[m[32mplatform/bq/frontend/command_load.py[m
+[32m+[m[32mplatform/bq/frontend/command_make.py[m
+[32m+[m[32mplatform/bq/frontend/command_mkdef.py[m
+[32m+[m[32mplatform/bq/frontend/command_partition.py[m
+[32m+[m[32mplatform/bq/frontend/command_query.py[m
+[32m+[m[32mplatform/bq/frontend/command_repl.py[m
+[32m+[m[32mplatform/bq/frontend/command_show.py[m
+[32m+[m[32mplatform/bq/frontend/command_snapshot.py[m
+[32m+[m[32mplatform/bq/frontend/command_truncate.py[m
+[32m+[m[32mplatform/bq/frontend/command_undelete.py[m
+[32m+[m[32mplatform/bq/frontend/command_update.py[m
+[32m+[m[32mplatform/bq/frontend/command_version.py[m
+[32m+[m[32mplatform/bq/frontend/command_wait.py[m
+[32m+[m[32mplatform/bq/frontend/commands_iam.py[m
+[32m+[m[32mplatform/bq/frontend/flags.py[m
+[32m+[m[32mplatform/bq/frontend/utils.py[m
+[32m+[m[32mplatform/bq/frontend/utils_data_transfer.py[m
+[32m+[m[32mplatform/bq/frontend/utils_flags.py[m
+[32m+[m[32mplatform/bq/frontend/utils_formatting.py[m
+[32m+[m[32mplatform/bq/frontend/utils_id.py[m
+[32m+[m[32mplatform/bq/gcloud_wrapper/bq_to_gcloud_adapter.py[m
+[32m+[m[32mplatform/bq/gcloud_wrapper/bq_to_gcloud_command_executor.py[m
+[32m+[m[32mplatform/bq/gcloud_wrapper/bq_to_gcloud_config_classes.py[m
+[32m+[m[32mplatform/bq/gcloud_wrapper/gcloud_runner.py[m
+[32m+[m[32mplatform/bq/gcloud_wrapper/supported_commands/supported_commands_dataset.py[m
+[32m+[m[32mplatform/bq/gcloud_wrapper/supported_commands/supported_commands_project.py[m
+[32m+[m[32mplatform/bq/gcloud_wrapper/supported_gcloud_commands.py[m
+[32m+[m[32mplatform/bq/remove_pyreadline.py[m
+[32m+[m[32mplatform/bq/table_formatter.py[m
+[32m+[m[32mplatform/bq/third_party/absl/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/absl/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/absl/_collections_abc.py[m
+[32m+[m[32mplatform/bq/third_party/absl/app.py[m
+[32m+[m[32mplatform/bq/third_party/absl/app.pyi[m
+[32m+[m[32mplatform/bq/third_party/absl/command_name.py[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/__init__.pyi[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/_argument_parser.py[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/_argument_parser.pyi[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/_defines.py[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/_defines.pyi[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/_exceptions.py[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/_flag.py[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/_flag.pyi[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/_flagvalues.py[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/_flagvalues.pyi[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/_helpers.py[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/_validators.py[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/_validators_classes.py[m
+[32m+[m[32mplatform/bq/third_party/absl/flags/argparse_flags.py[m
+[32m+[m[32mplatform/bq/third_party/absl/logging/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/absl/logging/converter.py[m
+[32m+[m[32mplatform/bq/third_party/appdirs/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/bazel_platforms/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/cachetools/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/cachetools/_decorators.py[m
+[32m+[m[32mplatform/bq/third_party/cachetools/func.py[m
+[32m+[m[32mplatform/bq/third_party/cachetools/keys.py[m
+[32m+[m[32mplatform/bq/third_party/certifi/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/certifi/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/certifi/cacert.pem[m
+[32m+[m[32mplatform/bq/third_party/certifi/core.py[m
+[32m+[m[32mplatform/bq/third_party/cffi/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/charset_normalizer/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/charset_normalizer/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/charset_normalizer/api.py[m
+[32m+[m[32mplatform/bq/third_party/charset_normalizer/assets/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/charset_normalizer/cd.py[m
+[32m+[m[32mplatform/bq/third_party/charset_normalizer/constant.py[m
+[32m+[m[32mplatform/bq/third_party/charset_normalizer/legacy.py[m
+[32m+[m[32mplatform/bq/third_party/charset_normalizer/md.py[m
+[32m+[m[32mplatform/bq/third_party/charset_normalizer/models.py[m
+[32m+[m[32mplatform/bq/third_party/charset_normalizer/utils.py[m
+[32m+[m[32mplatform/bq/third_party/charset_normalizer/version.py[m
+[32m+[m[32mplatform/bq/third_party/fasteners/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/fasteners/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/fasteners/_utils.py[m
+[32m+[m[32mplatform/bq/third_party/fasteners/lock.py[m
+[32m+[m[32mplatform/bq/third_party/fasteners/process_lock.py[m
+[32m+[m[32mplatform/bq/third_party/fasteners/version.py[m
+[32m+[m[32mplatform/bq/third_party/gflags/AUTHORS[m
+[32m+[m[32mplatform/bq/third_party/gflags/COPYING[m
+[32m+[m[32mplatform/bq/third_party/gflags/ChangeLog[m
+[32m+[m[32mplatform/bq/third_party/gflags/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/gflags/MANIFEST.in[m
+[32m+[m[32mplatform/bq/third_party/gflags/Makefile[m
+[32m+[m[32mplatform/bq/third_party/gflags/NEWS[m
+[32m+[m[32mplatform/bq/third_party/gflags/PKG-INFO[m
+[32m+[m[32mplatform/bq/third_party/gflags/README[m
+[32m+[m[32mplatform/bq/third_party/gflags/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/gflags/gflags2man.py[m
+[32m+[m[32mplatform/bq/third_party/gflags/gflags_validators.py[m
+[32m+[m[32mplatform/bq/third_party/gflags/setup.cfg[m
+[32m+[m[32mplatform/bq/third_party/gflags/setup.py[m
+[32m+[m[32mplatform/bq/third_party/google/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/google/api_core/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/google/api_core/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/google/api_core/client_options.py[m
+[32m+[m[32mplatform/bq/third_party/google/api_core/iam.py[m
+[32m+[m[32mplatform/bq/third_party/google/apputils/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/google/apputils/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/google/apputils/app.py[m
+[32m+[m[32mplatform/bq/third_party/google/apputils/appcommands.py[m
+[32m+[m[32mplatform/bq/third_party/google/apputils/basetest.py[m
+[32m+[m[32mplatform/bq/third_party/google/apputils/datelib.py[m
+[32m+[m[32mplatform/bq/third_party/google/apputils/debug.py[m
+[32m+[m[32mplatform/bq/third_party/google/apputils/file_util.py[m
+[32m+[m[32mplatform/bq/third_party/google/apputils/resources.py[m
+[32m+[m[32mplatform/bq/third_party/google/apputils/run_script_module.py[m
+[32m+[m[32mplatform/bq/third_party/google/apputils/setup_command.py[m
+[32m+[m[32mplatform/bq/third_party/google/apputils/shellutil.py[m
+[32m+[m[32mplatform/bq/third_party/google/apputils/stopwatch.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/google/auth/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/_cloud_sdk.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/_default.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/_exponential_backoff.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/_helpers.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/_refresh_worker.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/_service_account_info.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/aws.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/compute_engine/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/compute_engine/_metadata.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/compute_engine/credentials.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/credentials.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/crypt/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/crypt/_cryptography_rsa.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/crypt/_python_rsa.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/crypt/base.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/crypt/rsa.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/environment_vars.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/exceptions.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/external_account.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/external_account_authorized_user.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/iam.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/identity_pool.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/impersonated_credentials.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/jwt.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/metrics.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/pluggable.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/transport/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/transport/_http_client.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/transport/_mtls_helper.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/transport/mtls.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/transport/requests.py[m
+[32m+[m[32mplatform/bq/third_party/google/auth/version.py[m
+[32m+[m[32mplatform/bq/third_party/google/oauth2/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/google/oauth2/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/google/oauth2/_client.py[m
+[32m+[m[32mplatform/bq/third_party/google/oauth2/challenges.py[m
+[32m+[m[32mplatform/bq/third_party/google/oauth2/credentials.py[m
+[32m+[m[32mplatform/bq/third_party/google/oauth2/reauth.py[m
+[32m+[m[32mplatform/bq/third_party/google/oauth2/service_account.py[m
+[32m+[m[32mplatform/bq/third_party/google/oauth2/sts.py[m
+[32m+[m[32mplatform/bq/third_party/google/oauth2/utils.py[m
+[32m+[m[32mplatform/bq/third_party/google_auth_httplib2/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/google_auth_httplib2/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/google_reauth/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/google_reauth/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/google_reauth/_helpers.py[m
+[32m+[m[32mplatform/bq/third_party/google_reauth/_reauth_client.py[m
+[32m+[m[32mplatform/bq/third_party/google_reauth/all_tests.py[m
+[32m+[m[32mplatform/bq/third_party/google_reauth/challenges.py[m
+[32m+[m[32mplatform/bq/third_party/google_reauth/errors.py[m
+[32m+[m[32mplatform/bq/third_party/google_reauth/reauth.py[m
+[32m+[m[32mplatform/bq/third_party/google_reauth/reauth_creds.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/_auth.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/_helpers.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/channel.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/discovery.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/discovery_cache/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/discovery_cache/appengine_memcache.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/discovery_cache/base.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/discovery_cache/file_cache.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/errors.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/http.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/mimeparse.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/model.py[m
+[32m+[m[32mplatform/bq/third_party/googleapiclient/schema.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/httplib2/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python2/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python2/auth.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python2/ca_certs_locater.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python2/cacerts.txt[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python2/certs.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python2/error.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python2/iri2uri.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python2/socks.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python3/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python3/auth.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python3/ca_certs_locater.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python3/cacerts.txt[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python3/certs.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python3/error.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python3/iri2uri.py[m
+[32m+[m[32mplatform/bq/third_party/httplib2/python3/socks.py[m
+[32m+[m[32mplatform/bq/third_party/idna/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/idna/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/idna/codec.py[m
+[32m+[m[32mplatform/bq/third_party/idna/compat.py[m
+[32m+[m[32mplatform/bq/third_party/idna/core.py[m
+[32m+[m[32mplatform/bq/third_party/idna/idnadata.py[m
+[32m+[m[32mplatform/bq/third_party/idna/intranges.py[m
+[32m+[m[32mplatform/bq/third_party/idna/package_data.py[m
+[32m+[m[32mplatform/bq/third_party/idna/uts46data.py[m
+[32m+[m[32mplatform/bq/third_party/inflection/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/inflection/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/inflection/inflection.py[m
+[32m+[m[32mplatform/bq/third_party/ipaddr/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/libffi/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/libunwind/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/monotonic/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/monotonic/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/_helpers.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/_openssl_crypt.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/_pkce.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/_pure_python_crypt.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/_pycrypto_crypt.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/client.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/clientsecrets.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/contrib/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/contrib/_metadata.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/contrib/devshell.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/contrib/gce.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/contrib/multiprocess_file_storage.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/crypt.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/file.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/service_account.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/tools.py[m
+[32m+[m[32mplatform/bq/third_party/oauth2client_4_0/transport.py[m
+[32m+[m[32mplatform/bq/third_party/openssl/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/packaging/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/pkg_resources/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/ply/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/program_image_remapper/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/protobuf/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/ber/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/ber/decoder.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/ber/encoder.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/ber/eoo.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/cer/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/cer/decoder.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/cer/encoder.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/der/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/der/decoder.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/der/encoder.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/native/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/native/decoder.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/codec/native/encoder.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/compat/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/compat/binary.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/compat/calling.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/compat/dateandtime.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/compat/integer.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/compat/octets.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/compat/string.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/debug.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/error.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/type/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/type/base.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/type/char.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/type/constraint.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/type/error.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/type/namedtype.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/type/namedval.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/type/opentype.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/type/tag.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/type/tagmap.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/type/univ.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1/type/useful.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/pem.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc1155.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc1157.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc1901.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc1902.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc1905.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc2251.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc2314.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc2315.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc2437.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc2459.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc2511.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc2560.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc2986.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc3279.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc3280.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc3281.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc3412.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc3414.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc3447.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc3852.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc4210.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc4211.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc5208.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc5280.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc5652.py[m
+[32m+[m[32mplatform/bq/third_party/pyasn1_modules/rfc6402.py[m
+[32m+[m[32mplatform/bq/third_party/pycparser/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/pyglib/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/pyglib/appcommands.py[m
+[32m+[m[32mplatform/bq/third_party/pyglib/resources.py[m
+[32m+[m[32mplatform/bq/third_party/pyglib/stringutil.py[m
+[32m+[m[32mplatform/bq/third_party/pyparsing/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/pyparsing/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/python_runtime/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/apdu.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/convenience/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/convenience/authenticator.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/convenience/baseauthenticator.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/convenience/customauthenticator.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/convenience/localauthenticator.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/errors.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/hardware.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/hid/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/hid/base.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/hid/linux.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/hid/macos.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/hid/windows.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/hidtransport.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/model.py[m
+[32m+[m[32mplatform/bq/third_party/pyu2f/u2f.py[m
+[32m+[m[32mplatform/bq/third_party/requests/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/requests/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/requests/__version__.py[m
+[32m+[m[32mplatform/bq/third_party/requests/_internal_utils.py[m
+[32m+[m[32mplatform/bq/third_party/requests/adapters.py[m
+[32m+[m[32mplatform/bq/third_party/requests/api.py[m
+[32m+[m[32mplatform/bq/third_party/requests/auth.py[m
+[32m+[m[32mplatform/bq/third_party/requests/certs.py[m
+[32m+[m[32mplatform/bq/third_party/requests/compat.py[m
+[32m+[m[32mplatform/bq/third_party/requests/cookies.py[m
+[32m+[m[32mplatform/bq/third_party/requests/exceptions.py[m
+[32m+[m[32mplatform/bq/third_party/requests/help.py[m
+[32m+[m[32mplatform/bq/third_party/requests/hooks.py[m
+[32m+[m[32mplatform/bq/third_party/requests/models.py[m
+[32m+[m[32mplatform/bq/third_party/requests/packages.py[m
+[32m+[m[32mplatform/bq/third_party/requests/sessions.py[m
+[32m+[m[32mplatform/bq/third_party/requests/status_codes.py[m
+[32m+[m[32mplatform/bq/third_party/requests/structures.py[m
+[32m+[m[32mplatform/bq/third_party/requests/utils.py[m
+[32m+[m[32mplatform/bq/third_party/rsa/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/rsa/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/rsa/asn1.py[m
+[32m+[m[32mplatform/bq/third_party/rsa/common.py[m
+[32m+[m[32mplatform/bq/third_party/rsa/core.py[m
+[32m+[m[32mplatform/bq/third_party/rsa/key.py[m
+[32m+[m[32mplatform/bq/third_party/rsa/pem.py[m
+[32m+[m[32mplatform/bq/third_party/rsa/pkcs1.py[m
+[32m+[m[32mplatform/bq/third_party/rsa/pkcs1_v2.py[m
+[32m+[m[32mplatform/bq/third_party/rsa/prime.py[m
+[32m+[m[32mplatform/bq/third_party/rsa/randnum.py[m
+[32m+[m[32mplatform/bq/third_party/rsa/transform.py[m
+[32m+[m[32mplatform/bq/third_party/six/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/six/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/socks/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/socks/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/socks/sockshandler.py[m
+[32m+[m[32mplatform/bq/third_party/tcmalloc/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/termcolor/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/termcolor/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/typing_extensions/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/typing_extensions/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/tz/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/uritemplate/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/uritemplate/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/uritemplate/api.py[m
+[32m+[m[32mplatform/bq/third_party/uritemplate/orderedset.py[m
+[32m+[m[32mplatform/bq/third_party/uritemplate/template.py[m
+[32m+[m[32mplatform/bq/third_party/uritemplate/variable.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/urllib3/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/_collections.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/_version.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/connection.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/connectionpool.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/contrib/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/contrib/_appengine_environ.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/contrib/_securetransport/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/contrib/_securetransport/bindings.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/contrib/_securetransport/low_level.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/contrib/appengine.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/contrib/ntlmpool.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/contrib/securetransport.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/contrib/socks.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/exceptions.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/fields.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/filepost.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/packages/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/packages/backports/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/packages/backports/finalize.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/packages/backports/makefile.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/packages/six.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/poolmanager.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/request.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/response.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/util/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/util/connection.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/util/proxy.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/util/queue.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/util/request.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/util/response.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/util/retry.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/util/ssl_.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/util/ssl_match_hostname.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/util/ssltransport.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/util/timeout.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/util/url.py[m
+[32m+[m[32mplatform/bq/third_party/urllib3/util/wait.py[m
+[32m+[m[32mplatform/bq/third_party/wcwidth/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/wcwidth/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/wcwidth/table_wide.py[m
+[32m+[m[32mplatform/bq/third_party/wcwidth/table_zero.py[m
+[32m+[m[32mplatform/bq/third_party/wcwidth/unicode_versions.py[m
+[32m+[m[32mplatform/bq/third_party/wcwidth/wcwidth.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/LICENSE[m
+[32m+[m[32mplatform/bq/third_party/yaml/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/composer.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/constructor.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/cyaml.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/dumper.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/emitter.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/error.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/events.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/loader.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/nodes.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/parser.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/reader.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/representer.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/resolver.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/scanner.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/serializer.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib2/tokens.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/__init__.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/composer.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/constructor.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/cyaml.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/dumper.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/emitter.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/error.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/events.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/loader.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/nodes.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/parser.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/reader.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/representer.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/resolver.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/scanner.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/serializer.py[m
+[32m+[m[32mplatform/bq/third_party/yaml/lib3/tokens.py[m
+[32m+[m[32mplatform/bq/utils/bq_api_utils.py[m
+[32m+[m[32mplatform/bq/utils/bq_consts.py[m
+[32m+[m[32mplatform/bq/utils/bq_error.py[m
+[32m+[m[32mplatform/bq/utils/bq_error_utils.py[m
+[32m+[m[32mplatform/bq/utils/bq_gcloud_utils.py[m
+[32m+[m[32mplatform/bq/utils/bq_id_utils.py[m
+[32m+[m[32mplatform/bq/utils/bq_logging.py[m
+[32m+[m[32mplatform/bq/utils/bq_processor_utils.py[m
+[32m+[m[32mplatform/bq/wrapped_credentials.py[m
+[1mdiff --git a/exec -l /bin/bash/google-cloud-sdk/.install/bq.snapshot.json b/exec -l /bin/bash/google-cloud-sdk/.install/bq.snapshot.json[m
+[1mnew file mode 100644[m
+[1mindex 00000000..00bfb30a[m
+[1m--- /dev/null[m
+[1m+++ b/exec -l /bin/bash/google-cloud-sdk/.install/bq.snapshot.json[m	
+[36m@@ -0,0 +1,38 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m  "components": [[m
+[32m+[m[32m    {[m
+[32m+[m[32m      "data": {[m
+[32m+[m[32m        "contents_checksum": "4b9e672b28bc6aa2b672338af64f44f57550063ec0ee3cb6f46e9945f08218d0",[m
+[32m+[m[32m        "source": "",[m
+[32m+[m[32m        "type": "tar"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "dependencies": [[m
+[32m+[m[32m        "bq-nix",[m
+[32m+[m[32m        "bq-win",[m
+[32m+[m[32m        "core"[m
+[32m+[m[32m      ],[m
+[32m+[m[32m      "details": {[m
+[32m+[m[32m        "description": "Provides the bq tool for interacting with the BigQuery service.",[m
+[32m+[m[32m        "display_name": "BigQuery Command Line Tool"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "gdu_only": false,[m
+[32m+[m[32m      "id": "bq",[m
+[32m+[m[32m      "is_configuration": false,[m
+[32m+[m[32m      "is_hidden": false,[m
+[32m+[m[32m      "is_required": false,[m
+[32m+[m[32m      "platform": {},[m
+[32m+[m[32m      "platform_required": false,[m
+[32m+[m[32m      "version": {[m
+[32m+[m[32m        "build_number": 20250606142749,[m
+[32m+[m[32m        "version_string": "2.1.18"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    }[m
+[32m+[m[32m  ],[m
+[32m+[m[32m  "revision": 20250610213429,[m
+[32m+[m[32m  "schema_version": {[m
+[32m+[m[32m    "no_update": false,[m
+[32m+[m[32m    "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz",[m
+[32m+[m[32m    "version": 3[m
+[32m+[m[32m  },[m
+[32m+[m[32m  "version": "526.0.1"[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/exec -l /bin/bash/google-cloud-sdk/.install/bundled-python3-unix-linux-x86_64.manifest b/exec -l /bin/bash/google-cloud-sdk/.install/bundled-python3-unix-linux-x86_64.manifest[m
+[1mnew file mode 100644[m
+[1mindex 00000000..feffd3b5[m
+[1m--- /dev/null[m
+[1m+++ b/exec -l /bin/bash/google-cloud-sdk/.install/bundled-python3-unix-linux-x86_64.manifest[m	
+[36m@@ -0,0 +1,4930 @@[m
+[32m+[m[32mplatform/bundledpythonunix/bin/2to3[m
+[32m+[m[32mplatform/bundledpythonunix/bin/2to3-3.12[m
+[32m+[m[32mplatform/bundledpythonunix/bin/idle3[m
+[32m+[m[32mplatform/bundledpythonunix/bin/idle3.12[m
+[32m+[m[32mplatform/bundledpythonunix/bin/pip[m
+[32m+[m[32mplatform/bundledpythonunix/bin/pip3[m
+[32m+[m[32mplatform/bundledpythonunix/bin/pip3.12[m
+[32m+[m[32mplatform/bundledpythonunix/bin/pydoc3[m
+[32m+[m[32mplatform/bundledpythonunix/bin/pydoc3.12[m
+[32m+[m[32mplatform/bundledpythonunix/bin/python[m
+[32m+[m[32mplatform/bundledpythonunix/bin/python3[m
+[32m+[m[32mplatform/bundledpythonunix/bin/python3-config[m
+[32m+[m[32mplatform/bundledpythonunix/bin/python3.12[m
+[32m+[m[32mplatform/bundledpythonunix/bin/python3.12-config[m
+[32m+[m[32mplatform/bundledpythonunix/bin/wheel[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/Python.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/abstract.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/bltinmodule.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/boolobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/bytearrayobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/bytesobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/ceval.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/codecs.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/compile.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/complexobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/abstract.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/bytearrayobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/bytesobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/cellobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/ceval.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/classobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/code.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/compile.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/complexobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/context.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/descrobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/dictobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/fileobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/fileutils.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/floatobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/frameobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/funcobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/genobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/import.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/initconfig.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/interpreteridobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/listobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/longintrepr.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/longobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/memoryobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/methodobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/modsupport.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/object.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/objimpl.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/odictobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/picklebufobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/pthread_stubs.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/pyctype.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/pydebug.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/pyerrors.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/pyfpe.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/pyframe.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/pylifecycle.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/pymem.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/pystate.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/pythonrun.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/pythread.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/pytime.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/setobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/sysmodule.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/traceback.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/tupleobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/unicodeobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/warnings.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/cpython/weakrefobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/datetime.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/descrobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/dictobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/dynamic_annotations.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/enumobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/errcode.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/exports.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/fileobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/fileutils.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/floatobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/frameobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/genericaliasobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/import.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_abstract.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_asdl.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_ast.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_ast_state.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_atexit.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_atomic.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_atomic_funcs.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_bitutils.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_blocks_output_buffer.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_bytes_methods.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_bytesobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_call.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_ceval.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_ceval_state.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_code.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_compile.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_condvar.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_context.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_descrobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_dict.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_dict_state.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_dtoa.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_emscripten_signal.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_exceptions.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_faulthandler.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_fileutils.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_fileutils_windows.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_floatobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_flowgraph.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_format.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_frame.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_function.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_gc.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_genobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_getopt.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_gil.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_global_objects.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_global_objects_fini_generated.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_global_strings.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_hamt.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_hashtable.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_import.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_initconfig.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_instruments.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_interp.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_intrinsics.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_list.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_long.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_memoryobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_moduleobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_namespace.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_object.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_object_state.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_obmalloc.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_obmalloc_init.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_opcode.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_opcode_utils.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_parser.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_pathconfig.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_pyarena.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_pyerrors.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_pyhash.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_pylifecycle.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_pymath.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_pymem.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_pymem_init.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_pystate.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_pythread.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_range.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_runtime.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_runtime_init.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_runtime_init_generated.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_signal.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_sliceobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_strhex.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_structseq.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_symtable.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_sysmodule.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_time.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_token.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_traceback.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_tracemalloc.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_tuple.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_typeobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_typevarobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_ucnhash.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_unicodeobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_unicodeobject_generated.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_unionobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/internal/pycore_warnings.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/interpreteridobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/intrcheck.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/iterobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/listobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/longobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/marshal.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/memoryobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/methodobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/modsupport.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/moduleobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/object.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/objimpl.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/opcode.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/osdefs.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/osmodule.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/patchlevel.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/py_curses.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pybuffer.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pycapsule.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pyconfig.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pydtrace.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pyerrors.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pyexpat.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pyframe.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pyhash.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pylifecycle.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pymacconfig.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pymacro.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pymath.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pymem.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pyport.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pystate.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pystats.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pystrcmp.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pystrtod.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pythonrun.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pythread.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/pytypedefs.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/rangeobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/setobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/sliceobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/structmember.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/structseq.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/sysmodule.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/traceback.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/tracemalloc.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/tupleobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/typeslots.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/unicodeobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/warnings.h[m
+[32m+[m[32mplatform/bundledpythonunix/include/python3.12/weakrefobject.h[m
+[32m+[m[32mplatform/bundledpythonunix/lib/itcl4.2.4/itcl.tcl[m
+[32m+[m[32mplatform/bundledpythonunix/lib/itcl4.2.4/itclConfig.sh[m
+[32m+[m[32mplatform/bundledpythonunix/lib/itcl4.2.4/itclHullCmds.tcl[m
+[32m+[m[32mplatform/bundledpythonunix/lib/itcl4.2.4/itclWidget.tcl[m
+[32m+[m[32mplatform/bundledpythonunix/lib/itcl4.2.4/libitcl4.2.4.a[m
+[32m+[m[32mplatform/bundledpythonunix/lib/itcl4.2.4/libitclstub4.2.4.a[m
+[32m+[m[32mplatform/bundledpythonunix/lib/libpython3.12.a[m
+[32m+[m[32mplatform/bundledpythonunix/lib/libpython3.12.so[m
+[32m+[m[32mplatform/bundledpythonunix/lib/libpython3.12.so.1.0[m
+[32m+[m[32mplatform/bundledpythonunix/lib/libpython3.so[m
+[32m+[m[32mplatform/bundledpythonunix/lib/pkgconfig/python-3.12-embed.pc[m
+[32m+[m[32mplatform/bundledpythonunix/lib/pkgconfig/python-3.12.pc[m
+[32m+[m[32mplatform/bundledpythonunix/lib/pkgconfig/python3-embed.pc[m
+[32m+[m[32mplatform/bundledpythonunix/lib/pkgconfig/python3.pc[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/LICENSE.txt[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/__future__.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/__hello__.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/__phello__/__init__.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/__phello__/spam.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_aix_support.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_collections_abc.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_compat_pickle.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_compression.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_markupbase.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_osx_support.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_py_abc.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_pydatetime.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_pydecimal.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_pyio.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_pylong.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_sitebuiltins.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_strptime.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_sysconfigdata__linux_x86_64-linux-gnu.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_threading_local.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/_weakrefset.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/abc.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/aifc.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/antigravity.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/argparse.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/ast.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/__init__.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/__main__.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/base_events.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/base_futures.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/base_subprocess.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/base_tasks.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/constants.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/coroutines.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/events.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/exceptions.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/format_helpers.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/futures.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/locks.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/log.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/mixins.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/proactor_events.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/protocols.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/queues.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/runners.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/selector_events.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/sslproto.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/staggered.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/streams.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/subprocess.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/taskgroups.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/tasks.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/threads.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/timeouts.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/transports.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/trsock.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/unix_events.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/windows_events.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/asyncio/windows_utils.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/base64.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/bdb.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/bisect.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/bz2.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/cProfile.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/calendar.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/cgi.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/cgitb.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/chunk.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/cmd.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/code.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/codecs.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/codeop.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/collections/__init__.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/collections/abc.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/colorsys.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/compileall.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/concurrent/__init__.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/concurrent/futures/__init__.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/concurrent/futures/_base.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/concurrent/futures/process.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/concurrent/futures/thread.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/config-3.12-x86_64-linux-gnu/Makefile[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/config-3.12-x86_64-linux-gnu/Setup[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/config-3.12-x86_64-linux-gnu/Setup.bootstrap[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/config-3.12-x86_64-linux-gnu/Setup.local[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/config-3.12-x86_64-linux-gnu/Setup.stdlib[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/config-3.12-x86_64-linux-gnu/config.c[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/config-3.12-x86_64-linux-gnu/config.c.in[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/config-3.12-x86_64-linux-gnu/install-sh[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/config-3.12-x86_64-linux-gnu/libpython3.12.a[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/config-3.12-x86_64-linux-gnu/makesetup[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/config-3.12-x86_64-linux-gnu/python-config.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/config-3.12-x86_64-linux-gnu/python.o[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/configparser.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/contextlib.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/contextvars.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/copy.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/copyreg.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/crypt.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/csv.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/ctypes/__init__.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/ctypes/_aix.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/ctypes/_endian.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/ctypes/macholib/README.ctypes[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/ctypes/macholib/__init__.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/ctypes/macholib/dyld.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/ctypes/macholib/dylib.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/ctypes/macholib/fetch_macholib[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/ctypes/macholib/fetch_macholib.bat[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/ctypes/macholib/framework.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/ctypes/util.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/ctypes/wintypes.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/curses/__init__.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/curses/ascii.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/curses/has_key.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/curses/panel.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/curses/textpad.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/dataclasses.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/datetime.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/dbm/__init__.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/dbm/dumb.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/dbm/gnu.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/dbm/ndbm.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/decimal.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/difflib.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/dis.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/doctest.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/email/__init__.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/email/_encoded_words.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/email/_header_value_parser.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/email/_parseaddr.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/email/_policybase.py[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/email/architecture.rst[m
+[32m+[m[32mplatform/bundledpythonunix/lib/python3.12/email/ba
