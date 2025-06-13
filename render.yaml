@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: rtmp-server
+    plan: free  # Or "starter" for better performance
+    env: node
+    region: oregon  # Best for streaming
+    disk:
+      name: rtmpdata
+      mountPath: /var/lib/rtmp
+      sizeGB: 1
+    build:
+      use: bun
+      command: bun install && bun run start
+    envVars:
+      - key: PORT
+        value: 1935  # RTMP standard port
+    healthCheckPath: /ping  # Optional but recommended
